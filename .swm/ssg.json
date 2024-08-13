@@ -1,0 +1,18 @@
+{
+  "generator": "docusaurus",
+  "url": "https://github.com/Swimm-Demo/ai-dial-core-demo",
+  "docs": {
+      "overview.b9oh74gn.sw.md": "Intro",
+      "exploring-application-selection-in-controller-selector.2twc021s.sw.md": "Docs/Features/Misc",
+      "security-overview.irj67o5y.sw.md": "Docs/Features/Misc",
+      "the-deployment-class.nixty.sw.md": "Docs/Features/Misc",
+      "resource-moving-process.9l3iuv9a.sw.md": "Docs/Features/Misc",
+      "rate-limiting-overview.92pwav0h.sw.md": "Docs/Features/Misc",
+      "http-request-and-response-handling.djccj1jx.sw.md": "Docs/Features",
+      "functional-operations-overview.z6x980gv.sw.md": "Docs/Features"
+  },
+  "config": {
+      "title": "AI dial core demo",
+      "tagline": "a demo for ai dial core"
+  }
+}

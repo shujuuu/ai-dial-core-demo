@@ -1,0 +1,69 @@
+{
+  "vertx": {
+    "workerPoolSize": 32,
+    "metricsOptions": {
+      "enabled": false,
+      "jvmMetricsEnabled": false,
+      "labels": [
+        "HTTP_METHOD",
+        "HTTP_CODE",
+        "HTTP_PATH"
+      ],
+      "prometheusOptions": {
+        "enabled": false,
+        "startEmbeddedServer": false,
+        "embeddedServerOptions": {
+          "port": 9464
+        }
+      },
+      "oltpOptions": {
+        "enabled": false
+      }
+    }
+  },
+  "client": {
+    "idleTimeoutUnit": "MILLISECONDS",
+    "idleTimeout": 300000,
+    "connectTimeout": 10000,
+    "keepAlive": true,
+    "maxPoolSize": 128
+  },
+  "server": {
+    "port": 0,
+    "acceptBacklog": 4096,
+    "idleTimeoutUnit": "MILLISECONDS",
+    "idleTimeout": 300000,
+    "compressionSupported": true
+  },
+  "config": {
+    "files": ["aidial.config.json"],
+    "reload": 60000
+  },
+  "identityProviders": {
+    "ipd1": {
+      "jwksUrl": "http://fakeJwksUrl:8080",
+      "rolePath": "roles",
+      "issuerPattern": "issuer"
+    }
+  },
+  "encryption": {
+    "password": "password",
+    "salt": "salt"
+  },
+  "resources": {
+    "maxSize" : 1048576,
+    "syncPeriod": 60000,
+    "syncDelay": 120000,
+    "syncBatch": 4096,
+    "cacheExpiration": 300000,
+    "compressionMinSize": 256
+  },
+  "applications": {
+    "includeCustomApps": true
+  },
+  "access": {
+    "admin": {
+      "rules": [{"source": "roles", "function": "EQUAL", "targets": ["admin"]}]
+    }
+  }
+}

@@ -1,0 +1,216 @@
+{
+    "routes": {},
+    "addons": {
+        "search": {
+            "endpoint": "http://localhost:7010/search"
+        },
+        "forecast": {
+            "endpoint": "http://localhost:7010/forecast",
+            "token": "token",
+            "displayName": "Forecast",
+            "iconUrl": "https://host/forecast.svg",
+            "description": "Addon that provides forecast",
+            "userRoles": [
+                "Forecast"
+            ],
+            "forwardAuthToken": true,
+            "features": {
+                "rateEndpoint": "http://host/rate",
+                "tokenizeEndpoint": "http://host/tokinize",
+                "truncatePromptEndpoint": "http://host/truncate",
+                "configurationEndpoint": "http://host/configure",
+                "systemPromptSupported": false,
+                "toolsSupported": false,
+                "seedSupported":false,
+                "urlAttachmentsSupported": false,
+                "folderAttachmentsSupported": false
+            },
+            "maxInputAttachments": 10,
+            "inputAttachmentTypes": ["type1", "type2"]
+        },
+        "calculator": {
+            "endpoint": "http://localhost:7010/calculator"
+        }
+    },
+    "assistant": {
+        "endpoint": "http://localhost:7001/openai/deployments/assistant/chat/completions",
+        "assistants": {
+            "search_assistant": {
+                "prompt": "Commands: sit_down, get_up, run_away",
+                "addons": [
+                    "search"
+                ],
+                "displayName": "Forecast",
+                "iconUrl": "https://host/assistant.svg",
+                "description": "Addon that provides forecast",
+                "userRoles": [
+                    "Forecast"
+                ],
+                "forwardAuthToken": true,
+                "features": {
+                    "rateEndpoint": "http://host/rate",
+                    "tokenizeEndpoint": "http://host/tokinize",
+                    "truncatePromptEndpoint": "http://host/truncate",
+                    "configurationEndpoint": "http://host/configure",
+                    "systemPromptSupported": false,
+                    "toolsSupported": false,
+                    "seedSupported":false,
+                    "urlAttachmentsSupported": false,
+                    "folderAttachmentsSupported": false
+                },
+                "maxInputAttachments": 10,
+                "inputAttachmentTypes": ["type1", "type2"],
+                "defaults": {
+                    "paramStr": "value",
+                    "paramBool": true,
+                    "paramInt": 123,
+                    "paramFloat": 0.25
+                }
+            }
+        }
+    },
+    "applications": {
+        "app": {
+            "endpoint": "http://localhost:7001/openai/deployments/10k/chat/completions",
+            "token": "token",
+            "displayName": "Forecast",
+            "iconUrl": "https://host/app.svg",
+            "description": "Addon that provides forecast",
+            "userRoles": [
+                "Forecast"
+            ],
+            "forwardAuthToken": true,
+            "features": {
+                "rateEndpoint": "http://host/rate",
+                "tokenizeEndpoint": "http://host/tokinize",
+                "truncatePromptEndpoint": "http://host/truncate",
+                "configurationEndpoint": "http://host/configure",
+                "systemPromptSupported": false,
+                "toolsSupported": false,
+                "seedSupported":false,
+                "urlAttachmentsSupported": false,
+                "folderAttachmentsSupported": false
+            },
+            "maxInputAttachments": 10,
+            "inputAttachmentTypes": ["type1", "type2"],
+            "defaults": {
+                "paramStr": "value",
+                "paramBool": true,
+                "paramInt": 123,
+                "paramFloat": 0.25
+            }
+        }
+    },
+    "models": {
+        "chat-gpt-35-turbo": {
+            "type": "chat",
+            "tokenizerModel": "tokenizer",
+            "limits": {
+                "maxTotalTokens": 1000,
+                "maxPromptTokens": 200,
+                "maxCompletionTokens": 800
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": 0.56,
+                "completion": 0.67
+            },
+            "overrideName": "/some[!exotic?]/model/name",
+            "displayName": "GPT-3.5",
+            "displayVersion": "Turbo",
+            "endpoint": "http://localhost:7001/openai/deployments/gpt-35-turbo/chat/completions",
+            "upstreams": [
+                {
+                    "endpoint": "http://localhost:7001",
+                    "key": "modelKey1"
+                },
+                {
+                    "endpoint": "http://localhost:7002",
+                    "key": "modelKey2"
+                },
+                {
+                    "endpoint": "http://localhost:7003",
+                    "key": "modelKey3"
+                }
+            ],
+            "userRoles": ["role1", "role2"],
+            "forwardAuthToken": true,
+            "features": {
+                "rateEndpoint": "http://host/rate",
+                "tokenizeEndpoint": "http://host/tokinize",
+                "truncatePromptEndpoint": "http://host/truncate",
+                "configurationEndpoint": "http://host/configure",
+                "systemPromptSupported": false,
+                "toolsSupported": false,
+                "seedSupported":false,
+                "urlAttachmentsSupported": false,
+                "folderAttachmentsSupported": false
+            },
+            "maxInputAttachments": 10,
+            "inputAttachmentTypes": ["type1", "type2"],
+            "defaults": {
+                "paramStr": "value",
+                "paramBool": true,
+                "paramInt": 123,
+                "paramFloat": 0.25
+            }
+        },
+        "embedding-ada": {
+            "type": "embedding",
+            "endpoint": "http://localhost:7001/openai/deployments/ada/embeddings",
+            "upstreams": [
+                {
+                    "endpoint": "http://localhost:7001",
+                    "key": "modelKey4"
+                }
+            ]
+        },
+        "userRoles": ["role3"]
+    },
+    "keys": {
+        "proxyKey1": {
+            "project": "TestProject1",
+            "role": "default"
+        },
+        "proxyKey2": {
+            "project": "TestProject2",
+            "role": "default"
+        }
+    },
+    "roles": {
+        "default": {
+            "limits": {
+                "chat-gpt-35-turbo": {
+                    "minute": "100000",
+                    "day": "10000000"
+                },
+                "embedding-ada": {
+                    "minute": "100000",
+                    "day": "10000000"
+                },
+                "search": {},
+                "forecast": {},
+                "calculator": {},
+                "search_assistant": {},
+                "app": {}
+            }
+        },
+        "role1": {
+            "limits": {
+                "chat-gpt-35-turbo": {
+                    "minute": "200000",
+                    "day": "10000000"
+                }
+            }
+        },
+        "role2": {
+            "limits": {
+                "chat-gpt-35-turbo": {
+                    "minute": "100000",
+                    "day": "20000000"
+                }
+            }
+        }
+    },
+    "retriableErrorCodes": [401, 403]
+}
